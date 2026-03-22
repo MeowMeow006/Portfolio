@@ -3,6 +3,12 @@
 session_start ();
 require_once 'config.php';
 
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+
 if (isset($_POST['register_btn'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
