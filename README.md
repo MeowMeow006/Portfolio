@@ -42,4 +42,4 @@ docker-compose down
 To shut down and wipe all persistent data (database and Jenkins configurations):
 ```bash
 docker-compose down -v
-```"# Portfolio" 
+```

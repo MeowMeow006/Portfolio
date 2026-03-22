@@ -18,11 +18,11 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
--- Allow root from any host in container network and create app user
-CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'rootpassword';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
-
+-- Create app user with proper host privileges for Docker network
 CREATE USER IF NOT EXISTS 'app'@'%' IDENTIFIED BY 'rootpassword';
-GRANT ALL PRIVILEGES ON `user_db`.* TO 'app'@'%';
+GRANT ALL PRIVILEGES ON `user_db`.* TO 'app'@'%' WITH GRANT OPTION;
+
+-- Ensure app user can connect from any host
+ALTER USER 'app'@'%' REQUIRE NONE;
 
 FLUSH PRIVILEGES;
