@@ -1,0 +1,35 @@
+Git setup for this specific project (Portfolio)
+
+1) Go to project directory:
+cd "c:\Users\Mridul Pandey\Desktop\Project\Portfolio"
+
+2) Verify Git status:
+git status
+
+3) If repo not initialized:
+git init
+git remote add origin <your-repo-url>
+git fetch origin
+git checkout -b main origin/main
+
+4) Configure user identity:
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+5) Check remotes and branches:
+git branch
+git remote -v
+
+6) Sync latest:
+git checkout main
+git pull origin main
+
+7) Feature branch workflow:
+git checkout -b feature/<task>
+# make changes
+git add .
+git commit -m "Implement ..."
+git push -u origin feature/<task>
+
+8) Cleanup (optional):
+git fetch --all --prune
